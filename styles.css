@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(192, 155, 99);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-large{
+  font-size: 2rem;
+}
+
+.fancy-text{
+  font-family: "Cedarville Cursive", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.direct-text {
+  
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+.layedback-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: rgb(251, 255, 218);
+  padding: 30px;
+  text-align: center;
+}
+
+.header-text {
+  font-size: 2rem;
+  color: #000;
+  margin-left: 10px;
+}
+
+.header-items {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-left: 15px;
+}
+
+.header-item {
+  margin-left: 100px;
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s; /* Add transition for transform and color */
+}
+
+
+.header-item:hover {
+  transform: scale(1.1); /* Increase size on hover */
+  color: #ff8800; /* Change color on hover */
+}
+
+.cta-button {
+  display: inline-flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  background-color: #b47225;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  background-color: #e67300;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.button-icon {
+  font-size: 2.4rem;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.button-text {
+  margin-left: 5px; /* Adjust spacing between icon and text */
+}
+
+/* HERO */
+
+
+.image-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 1700px;
+  margin-left: 100px;
+  background-image: url('https://images.unsplash.com/photo-1612838320302-4b3b3b3b3b3b');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  border-bottom: 2.5px solid #000;
+}
+
+.hero-img-1 {
+  margin-top: 200px;
+  margin-right: 100px;
+  width: 300px;
+  height: 500px;
+}
+
+.hero-img-2 {
+  width: 455px;
+  height: 700px;
+
+}
+
+.hero-img-3 {
+  margin-top: 200px;
+  margin-left: 100px;
+    width: 300px;
+    height: 500px;
+  }
+
+
+  .text-hero{
+    margin-top: 120px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 150px;
+    font-size: 2rem;
+    color: #000;
+    text-align: center;
+  
+  }
+
+
+
+/* Footer */
+.footer {
+
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(251, 255, 218);
+  color: #000;
+  text-align: center;
+  padding: 10px ; 
+}
