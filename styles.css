@@ -50,7 +50,11 @@ body {
   align-items: center;
   justify-content: left;
   
-  background-color: #DBCFB3;
+  /* background-color: #DBCFB3; */
+
+
+  /* like my pants? */
+  background-color: #b9a476;
 
   /* original */
   /* background-color: rgb(251, 255, 218); */
@@ -61,15 +65,18 @@ body {
 
 .header-text {
   font-size: 2rem;
-  color: #000;
+  color: #fff;
   margin-left: 10px;
+  text-shadow: 2px 2px 0 #000; /* Add black outline */
 }
+
 
 .header-items {
   display: flex;
   align-items: center;
   width: 100%;
   margin-left: 15px;
+  
 }
 
 .header-item {
@@ -78,12 +85,16 @@ body {
   color: #000;
   text-decoration: none;
   transition: transform 0.3s, color 0.3s; /* Add transition for transform and color */
+  color: #fff;
+  text-shadow: 2px 2px 0 #000; /* Add black outline */
 }
+
 
 
 .header-item:hover {
   transform: scale(1.1); /* Increase size on hover */
-  color: #ff8800; /* Change color on hover */
+  color: #725221; /* Change color on hover */
+  text-shadow: 0px 0px 0 #5e431c;
 }
 
 .cta-button {
