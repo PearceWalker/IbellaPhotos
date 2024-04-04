@@ -33,7 +33,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
-
+  font-size: 5rem;
 }
 
 .layedback-text {
@@ -41,6 +41,15 @@ body {
   font-weight: 400;
   font-style: normal;
 
+}
+
+.undecorate {
+  text-decoration: none;
+}
+
+.active {
+  color: #000000;
+ text-shadow: none;
 }
 
 /* HEADER */
@@ -100,19 +109,22 @@ body {
 .cta-button {
   display: inline-flex; /* Use flexbox for alignment */
   align-items: center; /* Center items vertically */
-  background-color: #b47225;
+  /* background-color: #b47225; */
+  background-color: #F18FA1;
   color: #fff;
   font-size: 1.5rem;
   padding: 15px 30px;
   text-decoration: none;
+  text-shadow: 2px 2px 0 #000; /* Add black outline */
   border-radius: 50px; /* Pill shape */
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
+  border: 2px solid #000;
 }
 
 .cta-button:hover {
-  background-color: #e67300;
+  background-color: #cb00e6;
   transform: scale(1.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -125,6 +137,7 @@ body {
 
 .button-text {
   margin-left: 5px; /* Adjust spacing between icon and text */
+  
 }
 
 /* HERO */
