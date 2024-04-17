@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+}
+
 body {
   /* Warm and Inviting */
   background-color: #FFF8E7;
@@ -159,6 +166,10 @@ body {
   border-bottom: 2.5px solid #000;
 }
 
+.image-hero img{
+  animation: rise 1s ease-out forwards;
+}
+
 .hero-img-1 {
   margin-top: 200px;
   margin-right: 100px;
@@ -188,9 +199,16 @@ body {
     font-size: 2rem;
     color: #000;
     text-align: center;
-  
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
 
+  
+
+
+.text-hero.show {
+    opacity: 1;
+}
 
 
 /* Footer */
@@ -202,4 +220,31 @@ body {
   color: #000;
   text-align: center;
   padding: 10px ; 
+}
+
+
+
+/* Keyframes */
+
+@keyframes rise {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* ABOUT */
+
+.left-side {
+  width: 600px;
+}
+
+.right-side {
+  background-color: #f5e2b5;
+  width: 600px;
 }
