@@ -8,7 +8,7 @@
 
 .container {
   width: 1200px;
-  margin: 0 auto ;
+  margin: 0 auto;
   padding: 0 ;
   display: flex;
   background-color: #FFF8E7;
@@ -21,8 +21,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ 
 }
 
 .img-border{
@@ -270,12 +269,17 @@ ul {
 /* HERO */
 
 
+.hero-container {
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+}
+
 .image-hero {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 75vh;
-  width: 100vm;
+  width: 100%;
   background-image: url('https://images.unsplash.com/photo-1612838320302-4b3b3b3b3b3b');
   background-size: cover;
   background-position: center;
