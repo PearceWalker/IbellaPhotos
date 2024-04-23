@@ -3,10 +3,11 @@
   padding: 0;
   box-sizing: border-box;
   /* background-color: #cb00e6; */
+
 }
 
 .container {
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto ;
   padding: 0 ;
   display: flex;
@@ -21,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .img-border{
@@ -68,6 +70,14 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+
+}
+
+.layedback-text-s{
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: .8rem;
 
 }
 
@@ -166,14 +176,14 @@ ul {
 .header {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   width: 100%;
   /* background-color: #DBCFB3; */
 
 
   /* like my pants? */
   /* background-color: #b9a476; */
-background-image: url('images/header-back.jpg');
+  background-image: url('images/header-back.jpg');
   background-size: cover;
   /* original */
   /* background-color: rgb(251, 255, 218); */
@@ -181,14 +191,20 @@ background-image: url('images/header-back.jpg');
   padding: 30px;
   
 
-  text-align: center;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
 }
 
 .header-text {
-  font-size: 2rem;
+  font-size: 1rem;
   color: #fff;
   margin-left: 10px;
-  text-shadow: 2px 2px 0 #000; /* Add black outline */
+  text-shadow: 1px 1px 0 #000; /* Add black outline */
 }
 
 
@@ -196,61 +212,60 @@ background-image: url('images/header-back.jpg');
   display: flex;
   align-items: center;
   width: 100%;
-  margin-left: 15px;
   
+  justify-content: center;
 }
 
 .header-item {
   margin-left: 100px;
-  font-size: 1.5rem;
+  font-size: .8rem;
   color: #000;
   text-decoration: none;
-  transition: transform 0.3s, color 0.3s; /* Add transition for transform and color */
+  transition: transform 0.3s, color 0.09s; /* Add transition for transform and color */
   color: #fff;
   text-shadow: 1.5px 1.5px 0 #000; /* Add black outline */
 }
 
 
-
 .header-item:hover {
-  transform: scale(1.1); /* Increase size on hover */
-  color: #725221; /* Change color on hover */
-  text-shadow: 0px 0px 0 #5e431c;
+  color: #000000; /* Change color on hover */
+  text-shadow: none;
 }
 
-.cta-button {
-  display: inline-flex; /* Use flexbox for alignment */
-  align-items: center; /* Center items vertically */
-  /* background-color: #b47225; */
+/* .cta-button {
+  display: inline-flex; 
+  align-items: center;
+ 
   background-image: url('images/background-2.jpg');
   color: #000;
-  font-size: 1.5rem;
+  font-size: .9rem;
   padding: 15px 30px;
   text-decoration: none;
   
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px; 
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
   border: 1px solid #000;
-}
+} */
 
-.cta-button:hover {
-  background-color: #cb00e6;
-  transform: scale(1.1);
+/* .cta-button:hover {
+ 
+  transform: scale(1.01);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
 
-.button-icon {
+} */
+
+/* .button-icon {
   font-size: 2.4rem;
   margin-right: 10px;
  
-}
+} */
 
-.button-text {
-  margin-left: 5px; /* Adjust spacing between icon and text */
+/* .button-text {
+  margin-left: 5px; 
   font-size: 1.5rem;
-}
+} */
 
 /* HERO */
 
@@ -398,10 +413,21 @@ background-image: url('images/header-back.jpg');
   text-align: center; 
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0);
   overflow: hidden;
   position: relative;
+  
 }
+
+.pricing-card {
+  transition: all .1s ease-in;
+}
+
+.pricing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(0, 0, 0);
+}
+
 
 .pricing-img{
   
@@ -422,7 +448,7 @@ background-image: url('images/header-back.jpg');
   font-size: 1.5rem;
   margin-top: 20px;
   text-align: center;
-
+  font-weight: 500;
 }
 
 .all-price-container{
@@ -441,4 +467,24 @@ background-image: url('images/header-back.jpg');
 li {
   list-style-type: none; /* Remove default bullet points */
   padding: 5px 0; /* Adjust padding as needed */
+}
+
+
+/* GALLERY */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  gap: 10px; /* Gap between grid items */
+  width: 100%;
+  margin-top: 100px;
+}
+
+.gallery-item {
+  background-color: #ccc; /* Placeholder color */
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  margin: auto;
 }
