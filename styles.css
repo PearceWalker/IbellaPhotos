@@ -170,6 +170,11 @@ ul {
   margin: 0; /* Remove default margin */
 }
 
+.black{
+  color: #000;
+
+}
+
 /* HEADER */
 
 .header {
@@ -182,7 +187,8 @@ ul {
 
   /* like my pants? */
   /* background-color: #b9a476; */
-  background-image: url('images/header-back.jpg');
+  /* background-image: url('images/header-back.jpg'); */
+
   background-size: cover;
   /* original */
   /* background-color: rgb(251, 255, 218); */
@@ -201,9 +207,9 @@ ul {
 
 .header-text {
   font-size: 1rem;
-  color: #fff;
+  color: #000;
   margin-left: 10px;
-  text-shadow: 1px 1px 0 #000; /* Add black outline */
+ 
 }
 
 
@@ -221,8 +227,8 @@ ul {
   color: #000;
   text-decoration: none;
   transition: transform 0.3s, color 0.09s; /* Add transition for transform and color */
-  color: #fff;
-  text-shadow: 1.5px 1.5px 0 #000; /* Add black outline */
+  
+  /* text-shadow: 1.5px 1.5px 0 #000; Add black outline */
 }
 
 
@@ -460,7 +466,7 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #FFF8E7;
+  /* background-color: #FFF8E7; */
   
 }
 
