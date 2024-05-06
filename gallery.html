@@ -39,31 +39,41 @@
 
     <div class="gallery-grid">
 
-        <div class="gallery-item">
-
+        <div class="gallery-item" data-id="1">
+            <p>1</p>
         </div>
 
-        <div class="gallery-item">
-
+        <div class="gallery-item" data-id="2">
+            <p>2</p>
         </div>
 
-        <div class="gallery-item">
-        
+        <div class="gallery-item" data-id="3">
+            <p>3</p>
         </div>
 
-        <div class="gallery-item">
-
+        <div class="gallery-item" data-id="4">
+            <p>4</p>
         </div>
 
-        <div class="gallery-item">
-
+        <div class="gallery-item" data-id="5">
+            <p>5</p>
         </div>
 
-        <div class="gallery-item">
-        
+        <div class="gallery-item" data-id="6">
+            <p>6</p>
         </div>
 
 
     </div>
 
 </div>
+
+<script>
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const galleryId = this.getAttribute('data-id');
+        const baseUrl = window.location.origin.replace('5500', '3000'); // Replace port 5500 with 3000
+        window.location.href = `${baseUrl}/gallery?id=${galleryId}`;
+      });
+    });
+</script>
