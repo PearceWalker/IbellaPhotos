@@ -1,27 +1,40 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = 3000;
-
-import { v2 as cloudinary } from 'cloudinary';
-
-cloudinary.config({
-  cloud_name: 'dyam4n6rx',
-  api_key: '125485311227336',
-  api_secret: 'zinrYAssjZ_Htef49Di7ptcAzKY'
-});
+const upload = require('./multer');
+const connections = require('./db');
+const cloudinary = require('cloudinary').v2;
+const dbUtils = require('./dbUTILS');
+const mysql = require('mysql2/promise');
 
 
-// Set the view engine to EJS
 app.set('view engine', 'ejs');
 
-// Define route handlers
-
-// Route to handle GET requests to /gallery
-app.get('/gallery', (req, res) => {
-    const galleryId = req.query.id;
-    console.log('Received request for gallery with ID:', galleryId);
-    res.render('gallery_view', { galleryId });
+const pool = mysql.createPool({
+    host: '127.0.0.1',  
+    user: 'root',  
+    password: '1311FhU6*',
+    database: 'photo_gallery',
+    port: '3306'
 });
+
+app.get('/gallery', async (req, res) => {
+    try {
+      const galleryId = req.query.id;
+      console.log('Received request for gallery with ID:', galleryId);
+      const photos = await dbUtils.fetchFirstSixPhotosFromDatabase(pool, galleryId);
+      console.log('Fetched photos:', photos);
+      // Render your page with the fetched photos
+      res.render('gallery_view', { galleryId, photos });
+    } catch (error) {
+      console.error('Error handling gallery request:', error);
+      // Handle errors appropriately
+      res.status(500).send('Internal Server Error');
+    }
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {

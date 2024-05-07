@@ -2,12 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Galley View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBellaPhotos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        .photo-item {
+            margin-bottom: 20px;
+        }
+
+        .photo-item img {
+            width: 50%;
+            height: 50%;
+            height: auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
     
-  <h1> <%= galleryId %> </h1>
-<h4>hello</h4>
+  <% if (photos && photos.length > 0) { %>
+    <% photos.forEach(photo => { %>
+
+        <div class="photo-item">
+            <img src="<%= photo.url %>" alt="<%= photo.name %>">
+        </div>
+        
+    <% }); %>
+  <% } else { %>
+    <p>No photos found.</p>
+  <% } %>
+  <h4>hello</h4>
 </body>
 </html>
