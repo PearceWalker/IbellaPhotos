@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -7,9 +8,12 @@ const connections = require('./db');
 const cloudinary = require('cloudinary').v2;
 const dbUtils = require('./dbUTILS');
 const mysql = require('mysql2/promise');
+const path = require('path');
 
-
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
+
+
 
 const pool = mysql.createPool({
     host: '127.0.0.1',  
@@ -23,15 +27,34 @@ app.get('/gallery', async (req, res) => {
     try {
       const galleryId = req.query.id;
       console.log('Received request for gallery with ID:', galleryId);
+
       const photos = await dbUtils.fetchFirstSixPhotosFromDatabase(pool, galleryId);
       console.log('Fetched photos:', photos);
+
+      const gallery = await dbUtils.fetchGalleryById(pool, galleryId);
+      console.log('Fetched Gallery')
+      
       // Render your page with the fetched photos
-      res.render('gallery_view', { galleryId, photos });
+      res.render('gallery_view', { galleryId, gallery, photos });
     } catch (error) {
       console.error('Error handling gallery request:', error);
       // Handle errors appropriately
       res.status(500).send('Internal Server Error');
     }
+});
+
+app.get('/galleries', async (req, res) => {
+  try {
+      // Fetch galleries from the database
+      const galleries = await dbUtils.fetchGalleriesFromDatabase();
+
+      // Render the galleries page and pass the fetched galleries to the view
+      res.render('gallery', { galleries });
+  } catch (error) {
+      console.error('Error fetching galleries:', error);
+      // Handle errors appropriately
+      res.status(500).send('Internal Server Error');
+  }
 });
 
 

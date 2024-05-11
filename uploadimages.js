@@ -62,13 +62,13 @@ async function insertImageData(galleryId, name, url, publicId) {
     }
 }
 
-const folderPath = 'C:\\Users\\izzie\\Downloads\\sara sunset';
+const folderPath = 'C:\\Users\\izzie\\Downloads\\MariaBGrad24';
 
 async function uploadImages() {
     try {
-        const galleryId = await insertGallery('sara sunset', 'sara sunset photos');
+        const galleryId = await insertGallery('Maria Grad Shoot', 'MariaBGrad24');
         const files = fs.readdirSync(folderPath);
-        const folderName = 'Sara Sunset';
+        const folderName = 'MariaBGrad24';
 
         for (const file of files) {
             const filePath = path.join(folderPath, file);

@@ -16,7 +16,43 @@ async function fetchFirstSixPhotosFromDatabase(connection, galleryId) {
       throw error;
     }
   }
-  
-  module.exports = {
-    fetchFirstSixPhotosFromDatabase
-  };
+
+
+// Function to fetch galleries from the database
+async function fetchGalleriesFromDatabase() {
+  try {
+      const connection = await mysql.createConnection({
+          host: 'localhost',
+          user: 'root',
+          password: '1311FhU6*',
+          database: 'photo_gallery',
+          port: '3306'
+      });
+
+      const [rows] = await connection.execute('SELECT * FROM galleries');
+      await connection.end();
+
+      return rows;
+  } catch (error) {
+      console.error('Error fetching galleries from the database:', error);
+      throw error;
+  }
+}
+
+async function fetchGalleryById(pool, galleryId) {
+  try {
+    const [rows] = await pool.execute('SELECT name FROM galleries WHERE id = ?', [galleryId]);
+    return rows[0]; // Assuming there's only one row for the given galleryId
+  } catch (error) {
+    console.error('Error fetching gallery from the database:', error);
+    throw error;
+  }
+}
+
+
+module.exports = {
+  fetchGalleriesFromDatabase,
+  fetchFirstSixPhotosFromDatabase,
+  fetchGalleryById
+};
+ 
