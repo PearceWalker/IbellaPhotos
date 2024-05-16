@@ -24,24 +24,27 @@ const pool = mysql.createPool({
 });
 
 app.get('/gallery', async (req, res) => {
-    try {
+  try {
       const galleryId = req.query.id;
       console.log('Received request for gallery with ID:', galleryId);
 
+      // Fetch photos for the gallery
       const photos = await dbUtils.fetchFirstSixPhotosFromDatabase(pool, galleryId);
       console.log('Fetched photos:', photos);
 
+      // Fetch the gallery details
       const gallery = await dbUtils.fetchGalleryById(pool, galleryId);
-      console.log('Fetched Gallery')
+      console.log('Fetched Gallery:', gallery);
       
-      // Render your page with the fetched photos
-      res.render('gallery_view', { galleryId, gallery, photos });
-    } catch (error) {
+      // Render your page with the fetched photos and gallery data
+      res.render('gallery_view', { gallery, photos });
+  } catch (error) {
       console.error('Error handling gallery request:', error);
       // Handle errors appropriately
       res.status(500).send('Internal Server Error');
-    }
+  }
 });
+
 
 app.get('/galleries', async (req, res) => {
   try {

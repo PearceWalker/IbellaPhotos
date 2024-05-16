@@ -47,6 +47,7 @@ body {
   flex-direction: column;
   background-image: url('images/background-2.jpg');
   background-size: cover;
+
 }
 
 .icon-large{
@@ -447,11 +448,12 @@ ul {
 
 
 .pricing-img{
-  
+  border-top: 1px solid #000;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 300px;
+  height: 200px;
   margin-bottom: -20px;
 }
 
@@ -504,10 +506,15 @@ li {
  
   margin-right: 15px;
   margin-top: 25px;
-  border: #000 1px solid;
+  /* border: #000 1px solid; */
 }
 
-.gallery-item :hover {
+.gallery-img {
+  /* Other styles */
+  transition: transform 0.1s ease, box-shadow 0.3s ease; /* Add transition properties */
+}
+
+.gallery-img :hover {
   transform: translateY(-2px);
   box-shadow: 0 0 8px rgba(0, 0, 0);
 }
@@ -516,7 +523,7 @@ li {
   width: 250px;
   height: 400px;
   object-fit: cover;
- 
+  border-radius: 5px;
 }
 
 .gallery-name{

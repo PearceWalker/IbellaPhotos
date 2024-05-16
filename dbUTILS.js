@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 async function fetchFirstSixPhotosFromDatabase(connection, galleryId) {
     try {
       // Query to fetch the first five photos for the given gallery ID
-      const [rows] = await connection.execute('SELECT * FROM images WHERE gallery_id = ? LIMIT 6', [galleryId]);
+      const [rows] = await connection.execute('SELECT * FROM images WHERE gallery_id = ? LIMIT 15', [galleryId]);
       return rows;
     } catch (error) {
       throw error;
@@ -41,7 +41,7 @@ async function fetchGalleriesFromDatabase() {
 
 async function fetchGalleryById(pool, galleryId) {
   try {
-    const [rows] = await pool.execute('SELECT name FROM galleries WHERE id = ?', [galleryId]);
+    const [rows] = await pool.execute('SELECT * FROM galleries WHERE id = ?', [galleryId]);
     return rows[0]; // Assuming there's only one row for the given galleryId
   } catch (error) {
     console.error('Error fetching gallery from the database:', error);
