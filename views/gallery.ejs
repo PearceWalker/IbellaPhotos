@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBellaPhotos</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<div class="header">
+    <div class="header-items">
+        <div class="logo">
+            <i class="bi bi-camera icon-large"></i>
+            <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
+        </div>
+        <a href="../about.html" class="header-item direct-text">About</a>
+        <a href="../booking.html" class="header-item direct-text">Booking</a>
+        <a href="../galleries" class="header-item active direct-text">Gallery</a>
+        <a href="../contact.html" class="header-item direct-text">Contact</a>
+    </div>
+
+
+</div>
+
+
+<div class="container-col">
+
+
+<h1 class="layedback-text size-title">Galleries</h1>
+
+
+    <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-input">
+        <button class="search-button"><i class="fas fa-search"></i></button>
+      </div>
+
+    
+<div class="gallery-grid">
+    <% galleries.forEach(gallery => { %>
+        <div class="gallery-item" data-id="<%= gallery.id %>">
+            <a href="#" class="gallery-img"><img  src="<%= gallery.imageUrl %>" alt="<%= gallery.name %> "></a>
+            <p class="gallery-name layedback-text"><%= gallery.name %></p>
+        </div>
+        
+    <% }); %>
+</div>
+
+   
+</div>
+
+
+<script>
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const galleryId = this.getAttribute('data-id');
+        const baseUrl = window.location.origin.replace('5500', '3000');
+        window.location.href = `${baseUrl}/gallery?id=${galleryId}`;
+      });
+    });
+</script>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBellaPhotos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-items">
+            <div class="logo">
+                <i class="bi bi-camera icon-large"></i>
+                <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
+            </div>
+            <a href="about.html" class="header-item direct-text">About</a>
+            <a href="booking.html" class="header-item active direct-text">Booking</a>
+            <a href="#" class="header-item direct-text gallerylink">Gallery</a>
+            <a href="contact.html" class="header-item direct-text">Contact</a>
+        </div>
+    
+    <!-- <div>
+        <a href="booking.html" class="cta-button">
+            <div class="button-icon"><i class="bi bi-camera-fill"></i></div> Book Now!</a>
+    </div> -->
+    </div>
+
+
+<div class="all-price-container">
+    <h1 class="layedback-text command">Click a card to start booking!</h1>
+    <div class="pricing-container">
+
+            
+            <div class="pricing-card-holder">
+
+
+            <a href="" class="card-a">
+                <div class="pricing-card">
+                    <h1 class="layedback-text">Mini Session ($65)</h1>
+
+                    <div class="pricing-list layedback-text-s">
+                        <ul>
+                            <li>&#8226; 20 minutes of shooting time</li>
+                            <li>&#8226; One outfit, one location</li>
+                            <li>&#8226; 10 edited photos, plus b+w edits</li>
+                        </ul>
+
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1715105686/Sara%20Sunset/sxcwro9cdffzwogeudsb.jpg" class="pricing-img">
+                    </div>
+                </div>
+            </a>
+
+
+            <a href="" class="card-a">
+                <div class="pricing-card">
+                    <h1 class="layedback-text">Session #1 ($75)</h1>
+
+                    <div class="pricing-list layedback-text-s">
+                        <ul>
+                            <li>&#8226; 30 minutes of shooting time</li>
+                            <li>&#8226; One outfit, one location</li>
+                            <li>&#8226; 15 edited photos, plus b+w edits </li>
+                        </ul>
+
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1715097640/Wood%20Family%20Shoot%2024/mvxg7udndafxdphtqf9a.jpg" class="pricing-img">
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="card-a">
+                <div class="pricing-card">
+                    <h1 class="layedback-text">Session #2 ($115)</h1>
+
+                    <div class="pricing-list layedback-text-s">
+                        <ul>
+                            <li>&#8226; 1 hour of shooting time</li>
+                            <li>&#8226; Up to 2 outfit, up to 2 locations</li>
+                            <li>&#8226; 25 edited photos, plus b+w edits</li>
+                        </ul>
+
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1715096681/Kayla_Summit_Grad/gn11opgpkfsxzfhv2atm.jpg" class="pricing-img">
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="card-a">
+                <div class="pricing-card">
+                    <h1 class="layedback-text">Session #3 ($150)</h1>
+
+                    <div class="pricing-list layedback-text-s">
+
+                        <ul>
+                            <li>&#8226; 2 hour of shooting time</li>
+                            <li>&#8226; Up to 2 outfit, up to 3 locations</li>
+                            <li>&#8226; 35 edited photos, plus b+w edits</li>
+                        </ul>
+
+
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1715322875/MariaBGrad24/u3eymh7gmok2xlodvrsc.jpg" class="pricing-img">
+                    </div>
+                </div>
+            </div>
+            </a>
+
+
+    </div>
+</div>
+<script>
+    document.querySelectorAll('.gallerylink').forEach(item => {
+      item.addEventListener('click', function() {
+        const baseUrl = window.location.origin.replace('5500', '3000'); 
+        window.location.href = `${baseUrl}/galleries`;
+      });
+    });
+</script>
+    
+</body>
+</html>
