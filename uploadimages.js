@@ -14,10 +14,11 @@ cloudinary.config({
 
 async function insertGallery(name, description) {
     const connection = await mysql.createPool({
-        host: 'localhost',
-        user: 'root',
-        password: '1311FhU6*',
+        host: 'monorail.proxy.rlwy.net',  
+        user: 'root',  
+        password: 'odfuyANXguisoUygwNVoomfJDWjBighP',
         database: 'photo_gallery',
+        port: '54229',
         waitForConnections: true,
         connectionLimit: 10,
         queueLimit: 0
@@ -40,10 +41,11 @@ async function insertGallery(name, description) {
 // Function to insert image data into the images table
 async function insertImageData(galleryId, name, url, publicId) {
     const connection = await mysql.createPool({
-        host: 'localhost',
-        user: 'root',
-        password: '1311FhU6*',
+        host: 'monorail.proxy.rlwy.net',  
+        user: 'root',  
+        password: 'odfuyANXguisoUygwNVoomfJDWjBighP',
         database: 'photo_gallery',
+        port: '54229',
         waitForConnections: true,
         connectionLimit: 10,
         queueLimit: 0
@@ -62,13 +64,13 @@ async function insertImageData(galleryId, name, url, publicId) {
     }
 }
 
-const folderPath = 'C:\\Users\\izzie\\Downloads\\memphis zoo (12-26-23)';
+const folderPath = 'C:\\Users\\izzie\\Downloads\\MariaBGrad24';
 
 async function uploadImages() {
     try {
-        const galleryId = await insertGallery('memphis zoo', 'memphis zoo (12-26-23)');
+        const galleryId = await insertGallery('Maria Grad Shoot', 'MariaBGrad24');
         const files = fs.readdirSync(folderPath);
-        const folderName = 'Memphis Zoo';
+        const folderName = 'MariaBGrad24';
 
         for (const file of files) {
             const filePath = path.join(folderPath, file);
