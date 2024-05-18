@@ -4,38 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iBellaPhotos</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
-    <style>
-        .photo-item {
-            margin-bottom: 20px;
-        }
 
-        .photo-item img {
-            width: 50%;
-            height: 50%;
-            height: auto;
-            display: block;
-        }
-    </style>
-</head>
-<body>
+<style>
+
+.margin-xs-bottom{
+  margin-bottom: 10px;
+}
+
+
+  .photo-item img {
+    max-width: 100%; 
+    max-height: 100%;
+    display: cover;
+}
+
+.photo-item {
+  width: 250px; 
+  margin-bottom: 20px;
+  
+}
+
+.photo-header{
+  width: 350px;
+  margin-bottom: 50px;
+}
+
+.photo-grid {
+  margin: 0 auto;
+    width: 85% !important;
+    height: auto !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-top: 100px;
+}
+
+.text-align{
+  text-align: center;
+
+}
+
+.gallery-header {
+ 
+  padding: 10px 0;
+  margin-bottom: 20px;
+  height: 100vh;
+}
+
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('<%= gallery.imageUrl %>');
+  background-size: cover;
+  filter: blur(50px); /* Adjust the blur intensity as needed */
+  z-index: -1;
+}
+
+
+.gallery-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -60px;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: #000;
+  margin-top: -30px;
+  text-align: center;
+
+}
+
+</style>
     
-  <% if (photos && photos.length > 0) { %>
-    <% photos.forEach(photo => { %>
+</head>
 
-        <div class="photo-item">
-            <img src="<%= photo.url %>" alt="<%= photo.name %>">
+<div class="gallery-header">
+  <div class="blur-overlay"></div>
+  <div class="header">
+    <div class="header-items">
+        <div class="logo">
+            <i class="bi bi-camera icon-large"></i>
+            <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
         </div>
-        
-    <% }); %>
-  <% } else { %>
-    <p>No photos found.</p>
-  <% } %>
-  <h4>hello</h4>
+        <a href="../about.html" class="header-item direct-text">About</a>
+        <a href="../booking.html" class="header-item direct-text">Booking</a>
+        <a href="../galleries" class="header-item active direct-text">Gallery</a>
+        <a href="../contact.html" class="header-item direct-text">Contact</a>
+     </div>
+
+  </div>
+
+  <div class="gallery-show">
+  <h2 class="margin-l-top text-align margin-xs-bottom"><%= gallery.name %></h2>
+  <img src="<%= gallery.imageUrl %>" class="photo-header" alt="Gallery">
+  <i class="bi bi-arrow-down-circle arrow " id="scrollButton"></i>
+  </div>
+
+  
+
+</div>
+<body>
+
+
+
+
+<div class="center">
+      <div class="photo-grid">
+        <% if (photos && photos.length > 0) { %>
+          <% photos.forEach(photo => { %>
+      
+              <div class="photo-item">
+                  <img src="<%= photo.url %>" alt="<%= photo.name %>" >
+              </div>
+              
+          <% }); %>
+        <% } else { %>
+          <p>No photos found.</p>
+        <% } %>
+      </div>
+</div>
+      
+    
+<script src="./scripts/masonry.pkgd.min.js"></script>
+<script>
+const grid = document.querySelector('.photo-grid');
+  const masonry = new Masonry(grid, {
+  itemSelector: '.photo-item',
+  columnWidth: '.photo-item', // Specify the selector for the column width
+  gutter: 20, // Adjust the gap between items as needed
+  isFitWidth: true
+});
+
+</script>
+
+<script>
+  document.getElementById('scrollButton').addEventListener('click', function() {
+    // Scroll down 100vh
+    window.scrollBy({
+      top: window.innerHeight, // 100vh
+      behavior: 'smooth' // Smooth scroll animation
+    });
+  });
+</script>
+
+
 </body>
 </html>
