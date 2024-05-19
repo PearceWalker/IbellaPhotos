@@ -14,5 +14,6 @@
             "username": "root",
             "password": "1311FhU6*"
         }
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
