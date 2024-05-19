@@ -53,13 +53,13 @@
    
 </div>
 
-
 <script>
     document.querySelectorAll('.gallery-item').forEach(item => {
       item.addEventListener('click', function() {
         const galleryId = this.getAttribute('data-id');
-        const baseUrl = window.location.origin.replace('5500', '3000');
+        const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
         window.location.href = `${baseUrl}/gallery?id=${galleryId}`;
       });
     });
 </script>
+

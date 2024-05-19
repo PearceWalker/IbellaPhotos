@@ -68,9 +68,10 @@
 <script>
     document.querySelectorAll('.gallerylink').forEach(item => {
       item.addEventListener('click', function() {
-        const baseUrl = window.location.origin.replace('5500', '3000'); 
+        const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
         window.location.href = `${baseUrl}/galleries`;
       });
     });
 </script>
+
 </html>

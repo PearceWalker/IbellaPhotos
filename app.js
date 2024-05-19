@@ -13,6 +13,12 @@ const path = require('path');
 app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 
+const allowedOrigins = ['https://ibellaphoto.netlify.app/'];
+
+app.use(cors({
+  origin: allowedOrigins
+}));
+
 
 
 const pool = mysql.createPool({
