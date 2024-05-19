@@ -11,6 +11,7 @@ const mysql = require('mysql2/promise');
 const path = require('path');
 const cors = require('cors');
 
+
 app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 
