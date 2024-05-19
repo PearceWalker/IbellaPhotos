@@ -3,10 +3,10 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const upload = require('../multer');
-const connections = require('./functions/db');
+const upload = require('./multer');
+const connections = require('./db');
 const cloudinary = require('cloudinary').v2;
-const dbUtils = require('../functions/dbUTILS');
+const dbUtils = require('./dbUTILS');
 const mysql = require('mysql2/promise');
 const path = require('path');
 
