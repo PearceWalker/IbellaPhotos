@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const upload = require('../multer');
 const connections = require('./db');
 const cloudinary = require('cloudinary').v2;
@@ -31,15 +31,13 @@ app.get('/gallery', async (req, res) => {
         const galleryId = req.query.id;
         console.log('Received request for gallery with ID:', galleryId);
 
-        // Fetch photos for the gallery using the correct function from dbUtils.js
+       
         const photos = await dbUtils.fetchFirstSixPhotosFromDatabase(pool, galleryId);
         console.log('Fetched photos:', photos);
 
-        // Fetch the gallery details using the correct function from dbUtils.js
         const gallery = await dbUtils.fetchGalleryById(pool, galleryId);
         console.log('Fetched Gallery:', gallery);
-        
-        // Render your page with the fetched photos and gallery data
+     
         res.render('gallery_view', { gallery, photos });
     } catch (error) {
         console.error('Error handling gallery request:', error);
