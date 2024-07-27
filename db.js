@@ -1,5 +1,10 @@
 const mysql = require('mysql2/promise');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+const ENV = 'dev'; // Change to 'production' as needed
+
+const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
+dotenv.config({ path: envFile });
 
 async function checkDatabase() {
     const connection = await mysql.createConnection({

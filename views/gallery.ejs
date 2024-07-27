@@ -57,7 +57,8 @@
     document.querySelectorAll('.gallery-item').forEach(item => {
       item.addEventListener('click', function() {
         const galleryId = this.getAttribute('data-id');
-        const baseUrl = 'https://ibellaphotosserver.up.railway.app'; 
+        // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+        const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
         window.location.href = `${baseUrl}/gallery?id=${galleryId}`;
       });
     });

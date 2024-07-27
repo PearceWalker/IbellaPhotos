@@ -32,10 +32,13 @@
     </div>
     <div class="container">
 
+        
+        <h1 class="layedback-text">Get to Know me!</h1>
+
 <div class="left-side">
     <h1 class="layedback-text margin-s-top">Isabella Polania</h1>
     <h2 class="fancy-text margin-s-top">"Your New Favorite Photographer"</h2>
-    <p class="layedback-text  about-description margin-s-top">Hi, I'm Isabella, the owner and photographer at iBellaPhotos. I'm a professional photographer based in New York City. I specialize in portrait photography, but I also do event photography, product photography, and more. I've been a photographer for over 10 years, and I love what I do. I'm passionate about capturing special moments and creating beautiful images that my clients will cherish forever. I take pride in my work and strive to provide the best possible service to my clients. If you're looking for a photographer who is professional, reliable, and talented, look no further than iBellaPhotos. I would love to work with you and help you capture your special moments. Contact me today to book a session or learn more about my services.</p>
+    <p class="layedback-text  about-description margin-s-top">Hi, I’m Isabella Polania! I am a photographer based in the Memphis/Henderson, TN area. I am currently a double major in Photography and Computer Science at Freed Hardeman University. My mission is to capture memories through my lens!</p>
 
 </div>
 
@@ -43,12 +46,6 @@
 <div class="right-side">
     <div>
    <img src="images/about-head.png" class="image-small-h margin-s-top img-border" alt="">
-    </div>
-   <div class="image-cluster">
-
-    <img src="images/about-self.png" class="image-small-v img-border">
-    <img src="images/about-self2.png" class="image-small-v margin-l-left img-border">
-   </div>
 
 </div>
 
@@ -60,7 +57,8 @@
     <script>
         document.querySelectorAll('.gallerylink').forEach(item => {
           item.addEventListener('click', function() {
-            const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+            // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+            const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
             window.location.href = `${baseUrl}/galleries`;
           });
         });
