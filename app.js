@@ -1,5 +1,5 @@
 
-require('dotenv').config();
+const dotenv = require('dotenv');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +15,11 @@ const cors = require('cors');
 app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 
+const ENV = 'dev'; // Change to 'production' as needed
+
+const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
+dotenv.config({ path: envFile });
+
 const allowedOrigins = ['https://ibellaphoto.netlify.app/'];
 
 app.use(cors({
@@ -24,11 +29,11 @@ app.use(cors({
 
 
 const pool = mysql.createPool({
-    host: 'monorail.proxy.rlwy.net',  
-    user: 'root',  
-    password: 'odfuyANXguisoUygwNVoomfJDWjBighP',
-    database: 'photo_gallery',
-    port: '54229',
+    host: process.env.DB_HOST,  
+    user: process.env.DB_USER,  
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0

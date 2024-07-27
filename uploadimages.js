@@ -1,8 +1,14 @@
-require('dotenv').config(); // Load .env file
+const dotenv = require('dotenv');
 const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise'); // Import mysql2 package with promises support
+
+const ENV = 'dev'; // Change to 'production' as needed
+
+const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
+dotenv.config({ path: envFile });
+
 
 // Configure Cloudinary
 cloudinary.config({
@@ -14,11 +20,11 @@ cloudinary.config({
 
 async function insertGallery(name, description) {
     const connection = await mysql.createPool({
-        host: 'monorail.proxy.rlwy.net',  
-        user: 'root',  
-        password: 'odfuyANXguisoUygwNVoomfJDWjBighP',
-        database: 'photo_gallery',
-        port: '54229',
+        host: process.env.DB_HOST,  
+        user: process.env.DB_USER,  
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        port: process.env.DB_PORT,
         waitForConnections: true,
         connectionLimit: 10,
         queueLimit: 0
@@ -41,11 +47,11 @@ async function insertGallery(name, description) {
 // Function to insert image data into the images table
 async function insertImageData(galleryId, name, url, publicId) {
     const connection = await mysql.createPool({
-        host: 'monorail.proxy.rlwy.net',  
-        user: 'root',  
-        password: 'odfuyANXguisoUygwNVoomfJDWjBighP',
-        database: 'photo_gallery',
-        port: '54229',
+        host: process.env.DB_HOST,  
+        user: process.env.DB_USER,  
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        port: process.env.DB_PORT,
         waitForConnections: true,
         connectionLimit: 10,
         queueLimit: 0
@@ -64,13 +70,13 @@ async function insertImageData(galleryId, name, url, publicId) {
     }
 }
 
-const folderPath = 'C:\\Users\\izzie\\Downloads\\wood family shoot 24’';
+const folderPath = 'C:\\Users\\izzie\\Downloads\\kayla summit grad';
 
 async function uploadImages() {
     try {
-        const galleryId = await insertGallery('Wood Family Shoot’', 'wood family shoot 24’');
+        const galleryId = await insertGallery('Kayla Summit Grad Shoot', 'kayla summit grad');
         const files = fs.readdirSync(folderPath);
-        const folderName = 'wood family shoot 24’';
+        const folderName = 'kayla summit grad';
 
         for (const file of files) {
             const filePath = path.join(folderPath, file);
