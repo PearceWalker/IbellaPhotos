@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise'); // Import mysql2 package with promises support
 
-const ENV = 'dev'; // Change to 'production' as needed
+const ENV = 'production'; // Change to 'production' as needed
 
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });

@@ -22,7 +22,7 @@
         <div class="header-items">
             <div class="logo">
                 <i class="bi bi-camera icon-large"></i>
-                <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text ">iBellaPhotos</h1></a>
+                <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text portlink">iBellaPhotos</h1></a>
             </div>
             <a href="about.html" class="header-item direct-text">About</a>
             <a href="booking.html" class="header-item direct-text">Booking</a>
@@ -157,9 +157,9 @@
 }
 
 .circle-image{
-    border-radius: 100px;
+    border-radius: 50px;
     width: 100px;
-    border: 1px solid #000;
+    border: 2px solid #000;
 }
 </style>
 
@@ -183,8 +183,8 @@
 <script>
     document.querySelectorAll('.gallerylink').forEach(item => {
       item.addEventListener('click', function() {
-        // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-        const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
+        const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+        // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
         window.location.href = `${baseUrl}/galleries`;
       });
     });

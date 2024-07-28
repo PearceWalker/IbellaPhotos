@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 
-const ENV = 'dev'; // Change to 'production' as needed
+const ENV = 'production'; // Change to 'production' as needed
 
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });
