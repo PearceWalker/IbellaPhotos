@@ -8,9 +8,78 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        
+        
+        @keyframes highlightAnimation {
+            from {
+                transform: scale(1.1);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .search-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            right: 38px;
+        }
+
+        .clear-button{
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            
+           
+        }
+
+        .clear-button {
+            right: 10px;
+            background-color: rgba(255, 0, 0, 0);
+        }
+
+        .search-button i, .clear-button i {
+            font-size: 16px;
+        }
+
+        body{
+            background-image: url(images/websitebackground.jpg);
+        }
+
+        .black{
+            font-weight: bold;
+            color: black;
+        }
+    </style>
 </head>
+<body>
 
 <div class="header">
     <div class="header-items">
@@ -23,44 +92,91 @@
         <a href="../galleries" class="header-item active direct-text">Gallery</a>
         <a href="../contact.html" class="header-item direct-text">Contact</a>
     </div>
-
-
 </div>
 
-
 <div class="container-col">
-
-
-<h1 class="layedback-text size-title">Galleries</h1>
+    <h1 class="layedback-text size-title">Galleries</h1>
 
 
     <div class="search-container">
-        <input type="text" placeholder="Search..." class="search-input">
-        <button class="search-button"><i class="fas fa-search"></i></button>
-      </div>
+        <input type="text" placeholder="Search..." class="search-input" id="search-input">
+        <button class="search-button" id="search-button"><i class="bi bi-search"></i></button> 
+        <button class="clear-button" id="clear-button"><i class="bi bi-x-lg black"></i></button>
+
+    </div>
 
     
-<div class="gallery-grid">
-    <% galleries.forEach(gallery => { %>
-        <div class="gallery-item" data-id="<%= gallery.id %>">
-            <a href="#" class="gallery-img"><img  src="<%= gallery.imageUrl %>" alt="<%= gallery.name %> "></a>
-            <p class="gallery-name layedback-text"><%= gallery.name %></p>
-        </div>
-        
-    <% }); %>
-</div>
-
    
+
+    <div class="gallery-grid" id="gallery-grid">
+        <% galleries.forEach(gallery => { %>
+            <div class="gallery-item" data-id="<%= gallery.id %>">
+                <a href="#" class="gallery-img"><img src="<%= gallery.imageUrl %>" alt="<%= gallery.name %>"></a>
+                <p class="gallery-name layedback-text"><%= gallery.name %></p>
+            </div>
+        <% }); %>
+    </div>
 </div>
 
 <script>
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', function() {
-        const galleryId = this.getAttribute('data-id');
-        // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-        const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
-        window.location.href = `${baseUrl}/gallery?id=${galleryId}`;
-      });
+    function addClickEventToGalleryItems() {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const galleryId = this.getAttribute('data-id');
+                const baseUrl = window.location.origin;
+                window.location.href = `${baseUrl}/gallery?id=${galleryId}`;
+            });
+        });
+    }
+
+    document.getElementById('search-button').addEventListener('click', function() {
+        const searchQuery = document.getElementById('search-input').value;
+        if (searchQuery.trim() !== "") {
+            fetch(`/search?q=${encodeURIComponent(searchQuery)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const galleryGrid = document.getElementById('gallery-grid');
+                    galleryGrid.innerHTML = '';
+                    data.galleries.forEach(gallery => {
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        galleryItem.setAttribute('data-id', gallery.id);
+                        galleryItem.innerHTML = `
+                            <a href="#" class="gallery-img"><img src="${gallery.imageUrl}" alt="${gallery.name}"></a>
+                            <p class="gallery-name layedback-text">${gallery.name}</p>
+                        `;
+                        galleryGrid.appendChild(galleryItem);
+                    });
+
+                    // Add click event to new gallery items
+                    addClickEventToGalleryItems();
+
+                    // Center the first gallery item
+                
+                })
+                .catch(error => console.error('Error:', error));
+        }
     });
+
+    document.getElementById('clear-button').addEventListener('click', function() {
+        document.getElementById('search-input').value = '';
+        fetch('/galleries')
+            .then(response => response.text())
+            .then(html => {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                const newGalleryGrid = tempDiv.querySelector('.gallery-grid').innerHTML;
+                document.getElementById('gallery-grid').innerHTML = newGalleryGrid;
+
+                // Add click event to new gallery items
+                addClickEventToGalleryItems();
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    // Add click event to initial gallery items
+    addClickEventToGalleryItems();
 </script>
 
+</body>
+</html>

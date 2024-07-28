@@ -33,26 +33,137 @@
     <div class="container">
 
         
-        <h1 class="layedback-text">Get to Know me!</h1>
+        <h1 class="layedback-text margin-xl-top margin-s-bottom">Get to Know Me!</h1>
 
-<div class="left-side">
-    <h1 class="layedback-text margin-s-top">Isabella Polania</h1>
-    <h2 class="fancy-text margin-s-top">"Your New Favorite Photographer"</h2>
-    <p class="layedback-text  about-description margin-s-top">Hi, I’m Isabella Polania! I am a photographer based in the Memphis/Henderson, TN area. I am currently a double major in Photography and Computer Science at Freed Hardeman University. My mission is to capture memories through my lens!</p>
+        <style> 
 
-</div>
+            .margin-xl-top{
+                margin-top: 20px;
+            }
+            .container{
+                display: flex;
+                flex-direction: column;
+               justify-content: center;
+                align-items: center;
+            }
+
+            .about-content{
+                display: flex;
+                flex-direction:row;
+                justify-content: center;
+                align-items: center;
+                
+            }
+
+            .flex-column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-about{
+                width: 70%;
+                border: none;
+            }
+
+            .about-description{
+                font-size: 1.1rem;
+                width: 900px;
+                margin-right: -100px;
+            }
+        </style>
+        <div class="about-content">
+           
+           
+            <p class="layedback-text  about-description margin-s-top">Hi, I’m Isabella Polania! I am a photographer based in the Memphis/Henderson, TN area. I am currently a double major in Photography and Computer Science at Freed Hardeman University. My mission is to capture memories through my lens!</p>
 
 
-<div class="right-side">
-    <div>
-   <img src="images/about-head.png" class="image-small-h margin-s-top img-border" alt="">
+            <div class="flex-column">
+                <img src="images/pretty-lady.jpg" class="image-about margin-s-top img-border" alt="">
+                <h2 class="fancy-text margin-s-top">"Your New Favorite Photographer"</h2>
+            </div>
+           
 
-</div>
+        </div>
+
+        <div class="socials">
+
+            <div class="social-item">
+                <i class="bi bi-instagram large"></i>
+                <div class="flex-column">
+                    <a href="https://www.instagram.com/ibellaphotos/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/instaprofile.jpg" class="circle-image" alt="">
+                    </a>
+                    <h1 class="layedback-text-s">@iBellaPhotos</h1>
+                </div>
+            </div>
+            
+            <div class="social-item">
+                <i class="bi bi-tiktok large"></i>
+                <div class="flex-column">
+                    <a href="https://www.tiktok.com/@crochet_w_iz" target="_blank" rel="noopener noreferrer">
+                        <img src="images/8f4ec0f324546044fa952feb64785916~c5_100x100.jpeg" class="circle-image" alt="">
+                    </a>
+                    <h1 class="layedback-text-s">@crochet_w_iz</h1>
+                </div>
+            </div>
+            
+        </div>
+        </div>
+        
+        
+        
+        <style>
+        .socials {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           gap: 20px;
+           margin-bottom: 50px;
+          margin-top: 70px;
+        }
+
+     
+        
+        .social-item{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .large{
+            font-size: 4rem;
+           
+        }
+        
+        .layedback-text-s {
+            font-size: 1rem;
+        }
+        
+        .flex-column{
+            display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+        }
+        
+        .circle-image{
+            border-radius: 100px;
+            width: 100px;
+            border: 1px solid #000;
+        }
+        </style>
 
     </div>
 
-
-
+    <footer>
+        <div class="footer">
+            <p>&copy; 2024 iBellaPhotos</p>
+            <p>&copy; PWalker Designs</p>
+            
+        </div>
+    </footer>
 
     <script>
         document.querySelectorAll('.gallerylink').forEach(item => {
