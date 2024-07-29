@@ -1,63 +1,60 @@
 const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
 
-
 const ENV = 'production'; // Change to 'production' as needed
 
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });
 
-// Create a pool of connections
 const pool = mysql.createPool({
-    host: process.env.DB_HOST,  
-    user: process.env.DB_USER,  
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    waitForConnections: true,
-    connectionLimit: 10, // Adjust as needed
-    queueLimit: 0 // Unlimited queueing
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  connectTimeout: 10000, // 10 seconds
+  acquireTimeout: 10000, // 10 seconds
+  keepAliveInitialDelay: 10000, // 10 seconds initial delay
+  keepAlive: true, // Enable TCP keep-alive
 });
 
-// Function to fetch the first six photos from the database for a given gallery ID
-// Function to fetch the first six photos from the database for a given gallery ID
-async function fetchFirstSixPhotosFromDatabase(pool, galleryId) {
-  try {
-      // Query to fetch the first six photos for the given gallery ID
-      const [rows] = await pool.execute('SELECT * FROM images WHERE gallery_id = ? LIMIT 15', [galleryId]);
-      return rows;
-  } catch (error) {
-      throw error;
-  }
-}
-
-// Function to fetch galleries from the database
-async function fetchGalleriesFromDatabase() {
+async function retryQuery(query, params, retries = 5) {
+  for (let i = 0; i < retries; i++) {
     try {
-        const [rows] = await pool.execute('SELECT * FROM galleries');
-        return rows;
+      const [rows] = await pool.execute(query, params);
+      return rows;
     } catch (error) {
-        console.error('Error fetching galleries from the database:', error);
+      if (i === retries - 1) {
         throw error;
+      }
+      console.error('Retrying query due to error:', error);
     }
-}
-
-// Function to fetch a gallery by ID from the database
-async function fetchGalleryById(connection, galleryId) {
-  try {
-      // Query to fetch the gallery by ID
-      const [rows] = await connection.execute('SELECT * FROM galleries WHERE id = ?', [galleryId]);
-      return rows[0]; // Assuming there's only one row for the given galleryId
-  } catch (error) {
-      throw error;
   }
 }
 
+async function fetchFirstSixPhotosFromDatabase(galleryId) {
+  const query = 'SELECT * FROM images WHERE gallery_id = ? LIMIT 15';
+  return await retryQuery(query, [galleryId]);
+}
+
+async function fetchGalleriesFromDatabase() {
+  const query = 'SELECT * FROM galleries';
+  return await retryQuery(query);
+}
+
+async function fetchGalleryById(galleryId) {
+  const query = 'SELECT * FROM galleries WHERE id = ?';
+  const rows = await retryQuery(query, [galleryId]);
+  return rows[0];
+}
 
 module.exports = {
-    fetchGalleriesFromDatabase,
-    fetchFirstSixPhotosFromDatabase,
-    fetchGalleryById
+  fetchGalleriesFromDatabase,
+  fetchFirstSixPhotosFromDatabase,
+  fetchGalleryById,
 };
 
  

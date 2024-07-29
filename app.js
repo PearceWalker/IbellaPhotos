@@ -91,10 +91,10 @@ app.get('/gallery', async (req, res) => {
     const galleryId = req.query.id;
     console.log('Received request for gallery with ID:', galleryId);
 
-    const photos = await dbUtils.fetchFirstSixPhotosFromDatabase(pool, galleryId);
+    const photos = await dbUtils.fetchFirstSixPhotosFromDatabase(galleryId);
     console.log('Fetched photos:', photos);
 
-    const gallery = await dbUtils.fetchGalleryById(pool, galleryId);
+    const gallery = await dbUtils.fetchGalleryById(galleryId);
     console.log('Fetched Gallery:', gallery);
 
     res.render('gallery_view', { gallery, photos });
@@ -113,7 +113,6 @@ app.get('/galleries', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
 app.get('/booking', (req, res) => {
     res.render('booking', { bookingOptions });
 });
