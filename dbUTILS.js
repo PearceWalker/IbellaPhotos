@@ -41,10 +41,29 @@ async function fetchFirstSixPhotosFromDatabase(galleryId) {
 }
 
 async function fetchGalleriesFromDatabase() {
-  const query = 'SELECT * FROM galleries';
-  return await retryQuery(query);
+  let retries = 5;
+  while (retries) {
+      try {
+          const [rows, fields] = await pool.query('SELECT * FROM galleries');
+          return rows;
+      } catch (err) {
+          if (err.code === 'PROTOCOL_CONNECTION_LOST' && retries > 0) {
+              console.error('Retrying database query...');
+              retries--;
+              await new Promise(res => setTimeout(res, 1000)); // Wait 1 second before retrying
+          } else {
+              console.error('Failed query attempt:', {
+                  code: err.code,
+                  errno: err.errno,
+                  sqlState: err.sqlState,
+                  sqlMessage: err.sqlMessage
+              });
+              throw err;
+          }
+      }
+  }
+  throw new Error('Failed to fetch galleries after multiple attempts');
 }
-
 async function fetchGalleryById(galleryId) {
   const query = 'SELECT * FROM galleries WHERE id = ?';
   const rows = await retryQuery(query, [galleryId]);
