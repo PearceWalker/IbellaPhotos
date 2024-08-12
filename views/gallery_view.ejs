@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Oleo+Script&family=Poppins&display=swap" rel="stylesheet">
 
     <style>
+        
+        body{
+            background-image: url('images/websitebackground.jpg');
+        }
         .margin-xs-bottom {
             margin-bottom: 10px;
         }
@@ -198,8 +202,10 @@
             <i class="bi bi-arrow-down-circle arrow" id="scrollButton"></i>
         </div>
     </div>
-
+  
+   
     <div class="center">
+        <p>If all the pictures don't load, please refresh the page</p>
         <div class="photo-grid">
             <% if (photos && photos.length > 0) { %>
                 <% photos.forEach(photo => { %>

@@ -1,7 +1,7 @@
 const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
 
-const ENV = 'production'; // Change to 'production' as needed
+const ENV = 'dev'; // Change to 'production' as needed
 
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });
@@ -16,9 +16,9 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
   connectTimeout: 10000, // 10 seconds
-  acquireTimeout: 10000, // 10 seconds
+
   keepAliveInitialDelay: 10000, // 10 seconds initial delay
-  keepAlive: true, // Enable TCP keep-alive
+
 });
 
 async function retryQuery(query, params, retries = 5) {

@@ -107,8 +107,8 @@
 <script>
     document.querySelectorAll('.gallerylink').forEach(item => {
         item.addEventListener('click', function() {
-            const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-            // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
+            // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+            const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
             window.location.href = `${baseUrl}/galleries`;
         });
     });

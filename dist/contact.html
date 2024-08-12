@@ -95,16 +95,32 @@
         .form-group button:hover {
             background-color: #0056b3;
         }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notice {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: #ff0000;
+                }
     </style>
 </head>
 <body>
 <div class="container">
-<div class="left-side">
+
 <div class="contact-form">
 
    
         <h1>Contact Me!</h1>
-        <form action="/send-message" method="POST">
+
+        <p class="notice">Please do not use this form for booking inquiries. For bookings, visit the <a href="booking.html">Booking Tab</a>.</p>
+
+        <form action="https://api.web3forms.com/submit" method="POST">
+
+            <input type="hidden" name="access_key" value="8527a796-b899-4dd9-905d-6976201071e3">
          <div class="form-group">
                 <label for="name">* Name</label>
              <input type="text" id="name" name="name" required>
@@ -123,12 +139,9 @@
         </form>
     
 
+    
+</div>
 
-</div>
-</div>
-<div class="right-side">
-
-</div>
 </div>
 
 
@@ -145,8 +158,8 @@
     <script>
         document.querySelectorAll('.gallerylink').forEach(item => {
           item.addEventListener('click', function() {
-            const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-            // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
+            // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+            const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
             window.location.href = `${baseUrl}/galleries`;
           });
         });

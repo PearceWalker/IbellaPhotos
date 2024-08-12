@@ -92,7 +92,7 @@
                 <i class="bi bi-instagram large"></i>
                 <div class="flex-column">
                     <a href="https://www.instagram.com/ibellaphotos/" target="_blank" rel="noopener noreferrer">
-                        <img src="images/instaprofile.jpg" class="circle-image" alt="">
+                        <img src="images/insta-done.jpg" class="circle-image" alt="">
                     </a>
                     <h1 class="layedback-text-s">@iBellaPhotos</h1>
                 </div>
@@ -168,8 +168,8 @@
     <script>
         document.querySelectorAll('.gallerylink').forEach(item => {
           item.addEventListener('click', function() {
-            const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-            // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
+            // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+            const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
             window.location.href = `${baseUrl}/galleries`;
           });
         });

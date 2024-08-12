@@ -102,7 +102,7 @@
         <i class="bi bi-instagram large"></i>
         <div class="flex-column">
             <a href="https://www.instagram.com/ibellaphotos/" target="_blank" rel="noopener noreferrer">
-                <img src="images/instaprofile.jpg" class="circle-image" alt="">
+                <img src="images/insta-done.jpg" class="circle-image" alt="">
             </a>
             <h1 class="layedback-text-s">@iBellaPhotos</h1>
         </div>
@@ -159,7 +159,7 @@
 .circle-image{
     border-radius: 50px;
     width: 100px;
-    border: 2px solid #000;
+    border: 1px solid #000;
 }
 </style>
 
@@ -169,12 +169,17 @@
 
 </body>
 
-
+<style>
+    .undecorate{
+        color: black;
+    }
+</style>
 <!-- FOOTER -->
 <footer>
     <div class="footer">
         <p>&copy; 2024 iBellaPhotos</p>
-        <p>&copy; PWalker Designs</p>
+        <a href="" class="undecorate">Terms of Service</a>
+        
         
     </div>
 </footer>
@@ -183,8 +188,8 @@
 <script>
     document.querySelectorAll('.gallerylink').forEach(item => {
       item.addEventListener('click', function() {
-        const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-        // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
+        // const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
+        const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
         window.location.href = `${baseUrl}/galleries`;
       });
     });
