@@ -1,5 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const upload = require('./multer');
@@ -18,7 +20,20 @@ const ENV = 'dev'; // Change to 'production' as needed
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });
 
+app.use(session({
+  secret: 'HkUiO88911*66$v', // Replace with a secure key
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
+
+
 const allowedOrigins = ['https://ibellaphoto.netlify.app/'];
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Middleware to parse application/json
+app.use(bodyParser.json());
 
 app.use(cors({
   origin: allowedOrigins
@@ -117,7 +132,7 @@ app.get('/booking', (req, res) => {
     res.render('booking', { bookingOptions });
 });
 
-    app.get('/booking/:id', (req, res) => {
+app.get('/booking/:id', (req, res) => {
         const bookingId = parseInt(req.params.id, 10);
         const booking = bookingOptions.find(option => option.id === bookingId);
         if (booking) {
@@ -125,7 +140,49 @@ app.get('/booking', (req, res) => {
         } else {
             res.status(404).send('Booking option not found');
         }
+});
+
+
+    app.post('/verify-password', async (req, res) => {
+      const { password, galleryId } = req.body;
+      try {
+        const [rows] = await pool.execute('SELECT * FROM galleries WHERE id = ? AND password = ?', [galleryId, password]);
+    
+        if (rows.length > 0) {
+          req.session.galleryAccess = galleryId;
+          res.redirect(`/full-gallery/${galleryId}`);
+        } else {
+          res.send('Incorrect password. Please try again.');
+        }
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error. Please try again later.');
+      }
     });
+    
+    // Route to display the full gallery
+    app.get('/full-gallery/:id', async (req, res) => {
+      const galleryId = req.params.id;
+      if (req.session.galleryAccess === galleryId) {
+          try {
+              const [galleryRows] = await pool.query('SELECT * FROM galleries WHERE id = ?', [galleryId]);
+              const [imageRows] = await pool.query('SELECT * FROM images WHERE gallery_id = ?', [galleryId]);
+  
+              if (galleryRows.length > 0) {
+                  const gallery = galleryRows[0];
+                  res.render('full-gallery', { gallery, images: imageRows });
+              } else {
+                  res.status(404).send('Gallery not found.');
+              }
+          } catch (error) {
+              console.error(error);
+              res.status(500).send('Server error. Please try again later.');
+          }
+      } else {
+          res.status(403).send('Access denied.');
+      }
+  });
+  
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

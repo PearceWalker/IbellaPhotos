@@ -16,6 +16,14 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
   });
+
+
+function generatePassword(galleryName) {
+    const randomNum = Math.floor(100 + Math.random() * 900); 
+    const sanitizedGalleryName = galleryName.replace(/\s+/g, '');
+    return sanitizedGalleryName + randomNum;
+}
+
   
 
 async function insertGallery(name, description) {
@@ -31,7 +39,8 @@ async function insertGallery(name, description) {
     });
 
     try {
-        const galleryData = { name, description };
+        const password = generatePassword(name); // Generate the password
+        const galleryData = { name, description, password }; // Add password to gallery data
         const sql = 'INSERT INTO galleries SET ?';
         const [results] = await connection.query(sql, galleryData);
         console.log('Gallery inserted into the database');
@@ -43,6 +52,7 @@ async function insertGallery(name, description) {
         await connection.end(); // Close the connection pool
     }
 }
+
 
 // Function to insert image data into the images table
 async function insertImageData(galleryId, name, url, publicId) {
