@@ -2,15 +2,15 @@ const dotenv = require('dotenv');
 const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 const path = require('path');
-const mysql = require('mysql2/promise'); // Import mysql2 package with promises support
+const mysql = require('mysql2/promise'); 
 
-const ENV = 'dev'; // Change to 'production' as needed
+const ENV = 'dev'; 
 
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });
 
 
-// Configure Cloudinary
+
 cloudinary.config({
     cloud_name:  process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
@@ -39,22 +39,22 @@ async function insertGallery(name, description) {
     });
 
     try {
-        const password = generatePassword(name); // Generate the password
-        const galleryData = { name, description, password }; // Add password to gallery data
+        const password = generatePassword(name); 
+        const galleryData = { name, description, password }; 
         const sql = 'INSERT INTO galleries SET ?';
         const [results] = await connection.query(sql, galleryData);
         console.log('Gallery inserted into the database');
-        return results.insertId; // Return the ID of the inserted gallery
+        return results.insertId; 
     } catch (error) {
         console.error('An error occurred while inserting gallery into the database');
         throw error;
     } finally {
-        await connection.end(); // Close the connection pool
+        await connection.end(); 
     }
 }
 
 
-// Function to insert image data into the images table
+
 async function insertImageData(galleryId, name, url, publicId) {
     const connection = await mysql.createPool({
         host: process.env.DB_HOST,  
@@ -76,17 +76,17 @@ async function insertImageData(galleryId, name, url, publicId) {
         console.error('An error occurred while inserting image data into the database');
         throw error;
     } finally {
-        await connection.end(); // Close the connection pool
+        await connection.end(); 
     }
 }
 
-const folderPath = 'C:\\Users\\pearc\\Downloads\\MariaBGrad24';
+const folderPath = 'C:\\Users\\pearc\\Downloads\\farrah+pablo';
 
 async function uploadImages() {
     try {
-        const galleryId = await insertGallery('MariaB Grad 24', 'MariaB Grad 24');
+        const galleryId = await insertGallery('farrah+pablo', 'farrah+pablo');
         const files = fs.readdirSync(folderPath);
-        const folderName = 'MariaB Grad 24';
+        const folderName = 'farrah+pablo';
 
         for (const file of files) {
             const filePath = path.join(folderPath, file);
@@ -105,5 +105,5 @@ async function uploadImages() {
     }
 }
 
-// Call the function to start the upload process
+
 uploadImages();
