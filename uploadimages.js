@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise'); 
 
-const ENV = 'dev'; 
+const ENV = 'production'; 
 
 const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
 dotenv.config({ path: envFile });
