@@ -6,7 +6,7 @@ const mysql = require('mysql2/promise');
 
 const ENV = 'production'; 
 
-const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
+const envFile = ENV === 'production' ? '.env.productionupload' : '.env.dev';
 dotenv.config({ path: envFile });
 
 
