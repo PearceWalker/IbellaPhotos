@@ -76,7 +76,7 @@ const bookingOptions = [
         price: 115,
         duration: '1 hour of shooting time',
         details: ['Up to 2 outfits, up to 2 locations', '25 edited photos, plus b+w edits'],
-        imageUrl: 'https://res.cloudinary.com/drtfqetrk/image/upload/v1722130391/kayla%20summit%20grad%2024%E2%80%99/juhp6thsixxyua7lfuam.jpg',
+        imageUrl: 'https://res.cloudinary.com/drtfqetrk/image/upload/v1723691205/farrah%2Bpablo/pnifjjjvl6x2ngjvzxbk.jpg',
         dataPath: 'ibellaphotos/session-2'
     },
     {
