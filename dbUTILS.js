@@ -47,6 +47,7 @@ async function fetchGalleriesFromDatabase() {
           const [rows, fields] = await pool.query('SELECT * FROM galleries');
           return rows;
       } catch (err) {
+        console.log(err)
           if (err.code === 'PROTOCOL_CONNECTION_LOST' && retries > 0) {
               console.error('Retrying database query...');
               retries--;
