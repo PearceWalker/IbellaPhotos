@@ -1,5 +1,5 @@
 # Use the MySQL 8.0.39 image
-FROM mysql:8.0.39
+FROM mysql:9
 
 # Set environment variables
 ENV MYSQL_ROOT_PASSWORD=TwizRrrtgMKVcEiqmJpCqOnMNHmQJwOh
