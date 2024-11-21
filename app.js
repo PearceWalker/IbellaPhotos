@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 const ENV = 'production'; // Change to 'production' as needed
 
-const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
+const envFile = ENV === 'production' ? '.env' : '.env.dev';
 dotenv.config({ path: envFile });
 
 app.use(session({
@@ -58,7 +58,7 @@ const bookingOptions = [
         price: 65,
         duration: '20 minutes of shooting time',
         details: ['One outfit, one location', '10 edited photos, plus b+w edits'],
-        imageUrl: 'https://res.cloudinary.com/drtfqetrk/image/upload/v1722131006/sara%20sunset/ergsvalv4ymckztztops.jpg',
+        imageUrl: 'https://res.cloudinary.com/dyam4n6rx/image/upload/v1732157264/sarasunset/ne4a5qqr20rccvy1yljp.jpg',
         dataPath: 'ibellaphotos/mini-session'
     },
     {
@@ -67,7 +67,7 @@ const bookingOptions = [
         price: 75,
         duration: '30 minutes of shooting time',
         details: ['One outfit, one location', '15 edited photos, plus b+w edits'],
-        imageUrl: 'https://res.cloudinary.com/drtfqetrk/image/upload/v1722120724/farrah%2Bpablo/sqsm9jep3mtmqxz1yb2o.jpg',
+        imageUrl: 'https://res.cloudinary.com/dyam4n6rx/image/upload/v1732157642/wood%20family%20shoot%2024/xz8ighehfkafzhid24fb.jpg',
         dataPath: 'ibellaphotos/session-1'
     },
     {
@@ -85,13 +85,17 @@ const bookingOptions = [
         price: 150,
         duration: '2 hours of shooting time',
         details: ['Up to 2 outfits, up to 3 locations', '35 edited photos, plus b+w edits'],
-        imageUrl: 'https://res.cloudinary.com/drtfqetrk/image/upload/v1722137714/MariaB%20Grad%2024/ohc1yjkkqxmisgujylgl.jpg',
+        imageUrl: 'https://res.cloudinary.com/dyam4n6rx/image/upload/v1732161258/kayla%20summit%20grad/qyeystpmtingufdch2ed.jpg',
         dataPath: 'ibellaphotos/session-3'
     }
 ];
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.redirect('/home');
+});
+
+app.get('/index.html', (req, res) => {
+  res.redirect('/home');
 });
 
 app.get('/search', async (req, res) => {
@@ -122,6 +126,24 @@ app.get('/gallery', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'about.html'));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'contact.html'));
+});
+
+app.get('/booking', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'booking.html'));
+});
+
+
 
 app.get('/galleries', async (req, res) => {
   try {
@@ -164,7 +186,7 @@ app.get('/booking/:id', (req, res) => {
       }
     });
     
-    // Route to display the full gallery
+  
     app.get('/full-gallery/:id', async (req, res) => {
       const galleryId = req.params.id;
       if (req.session.galleryAccess === galleryId) {

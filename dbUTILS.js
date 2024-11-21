@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 const ENV = 'production'; // Change to 'production' as needed
 
-const envFile = ENV === 'production' ? '.env.production' : '.env.dev';
+const envFile = ENV === 'production' ? '.env' : '.env.dev';
 dotenv.config({ path: envFile });
 
 const pool = mysql.createPool({

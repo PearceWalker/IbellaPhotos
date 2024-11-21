@@ -17,12 +17,12 @@
         <div class="header-items">
             <div class="logo">
                 <i class="bi bi-camera icon-large"></i>
-                <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
+                <a href="/home" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
             </div>
-            <a href="about.html" class="header-item active direct-text">About</a>
-            <a href="booking.html" class="header-item direct-text">Booking</a>
-            <a href="#" class="header-item direct-text gallerylink">Gallery</a>
-            <a href="contact.html" class="header-item direct-text">Contact</a>
+            <a href="/about" class="header-item direct-text">About</a>
+            <a href="/booking" class="header-item direct-text">Booking</a>
+            <a href="/galleries" class="header-item direct-text ">Galleries</a>
+            <a href="/contact" class="header-item direct-text">Contact</a>
         </div>
     
     <!-- <div>
@@ -33,9 +33,11 @@
     <div class="container">
 
         
-        <h1 class="layedback-text margin-xl-top margin-s-bottom">Get to Know Me!</h1>
+        <h1 class="layedback-text margin-xl-top margin-s-bottom ">Get to Know Me!</h1>
 
         <style> 
+
+            
 
             .margin-xl-top{
                 margin-top: 20px;
@@ -165,15 +167,7 @@
         </div>
     </footer>
 
-    <script>
-        document.querySelectorAll('.gallerylink').forEach(item => {
-          item.addEventListener('click', function() {
-            const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-            // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
-            window.location.href = `${baseUrl}/galleries`;
-          });
-        });
-    </script>
+   
     
 </body>
 </html>

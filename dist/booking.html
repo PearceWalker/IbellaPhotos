@@ -17,12 +17,12 @@
     <div class="header-items">
         <div class="logo">
             <i class="bi bi-camera icon-large"></i>
-            <a href="index.html" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
+            <a href="/home" class="undecorate"><h1 class="header-text undecorate direct-text">iBellaPhotos</h1></a>
         </div>
-        <a href="about.html" class="header-item direct-text">About</a>
-        <a href="booking.html" class="header-item active direct-text">Booking</a>
-        <a href="#" class="header-item direct-text gallerylink">Gallery</a>
-        <a href="contact.html" class="header-item direct-text">Contact</a>
+        <a href="/about" class="header-item direct-text">About</a>
+        <a href="/booking" class="header-item direct-text">Booking</a>
+        <a href="/galleries" class="header-item direct-text ">Galleries</a>
+        <a href="/contact" class="header-item direct-text">Contact</a>
     </div>
 </div>
 
@@ -39,7 +39,7 @@
     <h1 class="layedback-text command">Click a card to start booking!</h1>
     <div class="pricing-container">
         <div class="pricing-card-holder">
-            <a href="http://localhost:3000/booking/1" class="card-a">
+            <a href="/booking/1" class="card-a">
                 <div class="pricing-card">
                     <h1 class="layedback-text">Mini Session ($65)</h1>
                     <div class="pricing-list layedback-text-s">
@@ -48,14 +48,14 @@
                             <li>&#8226; One outfit, one location</li>
                             <li>&#8226; 10 edited photos, plus b+w edits</li>
                         </ul>
-                        <img src="https://res.cloudinary.com/drtfqetrk/image/upload/v1722131006/sara%20sunset/ergsvalv4ymckztztops.jpg" class="pricing-img">
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1732157264/sarasunset/ne4a5qqr20rccvy1yljp.jpg" class="pricing-img">
                     </div>
                 </div>
             </a>
         </div>
 
         <div class="pricing-card-holder">
-            <a href="http://localhost:3000/booking/2" class="card-a">
+            <a href="/booking/2" class="card-a">
                 <div class="pricing-card">
                     <h1 class="layedback-text">Session #1 ($75)</h1>
                     <div class="pricing-list layedback-text-s">
@@ -64,14 +64,14 @@
                             <li>&#8226; One outfit, one location</li>
                             <li>&#8226; 15 edited photos, plus b+w edits </li>
                         </ul>
-                        <img src="https://res.cloudinary.com/drtfqetrk/image/upload/v1722120724/farrah%2Bpablo/sqsm9jep3mtmqxz1yb2o.jpg" class="pricing-img">
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1732157642/wood%20family%20shoot%2024/xz8ighehfkafzhid24fb.jpg" class="pricing-img">
                     </div>
                 </div>
             </a>
         </div>
 
         <div class="pricing-card-holder">
-            <a href="http://localhost:3000/booking/3" class="card-a">
+            <a href="/booking/3" class="card-a">
                 <div class="pricing-card">
                     <h1 class="layedback-text">Session #2 ($115)</h1>
                     <div class="pricing-list layedback-text-s">
@@ -87,7 +87,7 @@
         </div>
 
         <div class="pricing-card-holder">
-            <a href="http://localhost:3000/booking/4" class="card-a">
+            <a href="/booking/4" class="card-a">
                 <div class="pricing-card">
                     <h1 class="layedback-text">Session #3 ($150)</h1>
                     <div class="pricing-list layedback-text-s">
@@ -96,7 +96,7 @@
                             <li>&#8226; Up to 2 outfits, up to 3 locations</li>
                             <li>&#8226; 35 edited photos, plus b+w edits</li>
                         </ul>
-                        <img src="https://res.cloudinary.com/drtfqetrk/image/upload/v1722137764/MariaB%20Grad%2024/wgczoxuseyom9ao2afyr.jpg" class="pricing-img">
+                        <img src="https://res.cloudinary.com/dyam4n6rx/image/upload/v1732161258/kayla%20summit%20grad/qyeystpmtingufdch2ed.jpg" class="pricing-img">
                     </div>
                 </div>
             </a>
@@ -104,15 +104,7 @@
     </div>
 </div>
 
-<script>
-    document.querySelectorAll('.gallerylink').forEach(item => {
-        item.addEventListener('click', function() {
-            const baseUrl = 'https://ibellaphotosserver.up.railway.app'; // Update with your Railway backend URL
-            // const baseUrl = 'http://localhost:3000'; // Update with your local backend URL
-            window.location.href = `${baseUrl}/galleries`;
-        });
-    });
-</script>
+
 
 </body>
 </html>
